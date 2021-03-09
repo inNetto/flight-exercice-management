@@ -1,0 +1,16 @@
+{
+  "aeronave": [
+    {
+      "id": 3,
+      "nome": "C99",
+      "matricula": "09091722",
+      "projeto": "C99"
+    },
+    {
+      "id": 4,
+      "nome": "C97",
+      "matricula": "10081823",
+      "projeto": "C97"
+    }
+  ]
+}
