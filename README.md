@@ -1,6 +1,6 @@
-# FlightSchedule (flight-schedule)
+# Flight Exercice Management
 
-Management of flights for military exercices
+Management of flights for operational exercices
 
 ## Install the dependencies
 ```bash
