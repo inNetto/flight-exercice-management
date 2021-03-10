@@ -1,7 +1,7 @@
 <template>
     <q-table
         title=""
-        :data="aeronaves"
+        :data="data"
         :columns="columns"
         row-key="name"
         selection="multiple"
@@ -18,7 +18,7 @@
             color="primary"
             icon-right="add"
             no-caps
-           @click="showModal"
+           @click="triggerModal()"
           />
         </template>
         <template v-slot:body-cell-action="props">
@@ -40,9 +40,13 @@ import { api } from '../../../boot/axios'
 import AeronaveService from '../../../domain/aeronave/AeronaveService'
 
 export default {
-  props: {
 
+  data () {
+    return {
+      data: []
+    }
   },
+
   created () {
     this.service = new AeronaveService(api)
     this.service
@@ -52,8 +56,8 @@ export default {
       })
   },
   methods: {
-    showModal () {
-      this.$refs.dialog.open()
+    triggerModal () {
+      this.$emit('modalActive')
     },
 
     deleteSelected () {
