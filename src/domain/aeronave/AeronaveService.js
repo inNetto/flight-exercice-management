@@ -28,4 +28,19 @@ export default class AeronaveService {
         this.data = response.data
       })
   }
+
+  update (id) {
+    return this._resource
+      .put(`/aeronave/${id}`)
+  }
+
+  create (aeronave) {
+    if (aeronave.id) {
+      return this._resource
+        .put(`/aeronave/${aeronave.id}`)
+    } else {
+      return this._resource
+        .post('aeronave', aeronave)
+    }
+  }
 }

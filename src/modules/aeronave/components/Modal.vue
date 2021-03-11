@@ -6,7 +6,7 @@
         </q-card-section>
 
         <q-card-section class="q-pt-none">
-          <Form />
+          <Form :id="id" />
         </q-card-section>
 
         <q-card-actions align="right">
@@ -18,6 +18,7 @@
 <script>
 import Form from './Form'
 export default {
+  props: ['id'],
   components: {
     Form
   },

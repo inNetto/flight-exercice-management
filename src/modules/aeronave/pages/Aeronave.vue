@@ -1,8 +1,8 @@
 <template>
   <div class="q-pa-md row justify-center">
-    <Modal ref="dialog"/>
+    <Modal ref="dialog" :id="id"/>
     <Card :subtitle="subtitle">
-      <DataTable @modalActive="showModal()" :columns="columns" />
+      <DataTable @modalActive="showModal()" :colunas="colunas" />
     </Card>
   </div>
 </template>
@@ -17,12 +17,17 @@ export default {
   components: { Modal, DataTable, Card },
   data () {
     return {
-      columns: columns,
-      subtitle: 'Configuração de aeronaves'
+      colunas: columns,
+      subtitle: 'Configuração de aeronaves',
+      id: ''
+
     }
   },
   methods: {
-    showModal () {
+    showModal (_id) {
+      if (_id) {
+        this.id = _id
+      }
       this.$refs.dialog.open()
     }
   }

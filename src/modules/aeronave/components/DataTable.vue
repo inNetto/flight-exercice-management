@@ -1,8 +1,9 @@
 <template>
+<div>
     <q-table
         title=""
         :data="data"
-        :columns="columns"
+        :columns="colunas"
         row-key="name"
         selection="multiple"
         :selected.sync="selected"
@@ -18,7 +19,7 @@
             color="primary"
             icon-right="add"
             no-caps
-           @click="triggerModal()"
+           @click="$emit('modalActive')"
           />
         </template>
         <template v-slot:body-cell-action="props">
@@ -31,15 +32,33 @@
             dense
             @click="deleteval(props.row)"
           />
+            <q-btn
+              color="amber"
+              icon-right="mode_edit"
+              no-caps
+              flat
+              dense
+              @click="$emit('modalActive', '2')"
+            />
           </q-td>
         </template>
       </q-table>
+      </div>
 </template>
 <script>
+
+import { Aeronave } from '../../../domain/aeronave/Aeronave'
 import { api } from '../../../boot/axios'
 import AeronaveService from '../../../domain/aeronave/AeronaveService'
 
 export default {
+  aeronave: new Aeronave(),
+  props: {
+    colunas: {
+      type: Array,
+      required: true
+    }
+  },
 
   data () {
     return {
@@ -56,9 +75,6 @@ export default {
       })
   },
   methods: {
-    triggerModal () {
-      this.$emit('modalActive')
-    },
 
     deleteSelected () {
 
